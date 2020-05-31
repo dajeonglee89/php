@@ -38,7 +38,7 @@
 
       $rowPerPage = 10; // 각 페이지 게시물 수 
       $begin = ($currentPage - 1) * $rowPerPage;
-      $sql = "SELECT num, title, user, board_date FROM board order by num desc limit ".$begin.",".$rowPerPage."";
+      $sql = "SELECT board_num, board_title, board_user, board_date FROM board order by board_no desc limit ".$begin.",".$rowPerPage."";
       $resut = mysql_query($conn, $sql);
       if($result){
         echo "조회 성공";
@@ -61,20 +61,20 @@
         while($row = mysqli_fetch_array($result)){
       ?>
       <tr>
-        <td><?php echo $row["num"];?></td>
+        <td><?php echo $row["board_no"];?></td>
         <td>
           <?php 
-            echo "<a href='/board_detail.php?num=".$row["num"]."'>";
-            echo $row["title"];
+            echo "<a href='/board_detail.php?num=".$row["board_no"]."'>";
+            echo $row["board_title"];
             echo "</a>";
           ?>
         </td>
-        <td><?php echo $row["user"];?></td>
+        <td><?php echo $row["board_user"];?></td>
         <td><?php echo $row["board_date"];?></td>
 
         <?php
-          echo "<td><a href='/board_update_form.php?num=".$row["num"]."'>수정</a></td>";
-          echo "<td><a href='/board_delete_form.php?num=".$row["num"]."'>삭제</a></td>"
+          echo "<td><a href='/board_update_form.php?num=".$row["board_no"]."'>수정</a></td>";
+          echo "<td><a href='/board_delete_form.php?num=".$row["board_no"]."'>삭제</a></td>"
         ?>
       </tr>
         <?php } ?>

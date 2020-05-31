@@ -18,7 +18,7 @@
 
         $num = $_GET["num"];
         echo $num."번째 글 수정 페이지";
-        $sql = "SELECT num, board_title, board_content, board_user, board_date FROM board WHERE num = '".$num."'";
+        $sql = "SELECT board_no, board_title, board_content, board_user, board_date FROM board WHERE board_no = '".$board_no."'";
         $result = mysqli_query($conn, $sql);
         if($row = mysqli_fehch_arruy($result)){
         ?>
@@ -26,7 +26,7 @@
             <table>
                 <tr>
                     <td>글 번호</td>
-                    <td><input type="text" name="num" value="<?php echo $row["num"]?>"></td>
+                    <td><input type="text" name="board_no" value="<?php echo $row["board_no"]?>"></td>
                 </tr>
                 <tr>
                     <td>글 제목</td>

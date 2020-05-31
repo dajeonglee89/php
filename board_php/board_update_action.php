@@ -6,12 +6,12 @@
     <body>
         <div>board_update_action.php</div>
         <?php
-            $num = $_POST["num"];
+            $num = $_POST["board_no"];
             $board_title = $_POST["board_title"];
             $board_content = $_POST["board_content"];
-            echo "no : " .$num. "<br>";
-            echo "title : " .$board_title. "<br>";
-            echo "content : " .$board_content. "<br>";
+            echo "board_no : " .$board_no. "<br>";
+            echo "board_title : " .$board_title. "<br>";
+            echo "board_content : " .$board_content. "<br>";
             
         $conn = mysqli_connect("localhost", "root", "table","pw");
             if($conn){
@@ -20,7 +20,7 @@
                 die("연결 실패 : " .mysqli_error());
             }
 
-        $sql = "UPDATE board SET title='".$board_title."',content='".$board_content."',date=now() WHERE num=".$num."";
+        $sql = "UPDATE board SET board_title='".$board_title."',board_content='".$board_content."',date=now() WHERE board_no=".$board_no."";
         $result = mysqli_query($conn,$sql);
         
         if($result){

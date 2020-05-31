@@ -6,19 +6,19 @@
     <body>
         <div>board_delete_action.php</div>
         <?php
-            $num = $_POST["num"];
+            $board_no = $_POST["board_no"];
             $board_pw = $_POST["board_pw"];
-            echo "num : " .$num. "<br>";
+            echo "board_no : " .$board_no. "<br>";
             echo "board_pw : " .$board_pw. "<br>";
 
-        $conn = mysqli_connect("localhost", "root", "table","pw");
+        $conn = mysqli_connect("localhost", "phpboard", "board","pw");
         if($conn){
             echo "연결 성공";
         }else{
             die("연결 실패 : " .mysqli_error());
         }
 
-        $sql = "DELETE FROM board WHERE board_pw='".$board_pw."'AND num=".$num."";
+        $sql = "DELETE FROM board WHERE board_pw='".$board_pw."'AND board_no=".$board_no."";
 
         if($result){
             echo "삭제 성공 : " .$result;

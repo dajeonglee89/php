@@ -18,7 +18,7 @@
 
             $num = $_GET["num"];
             echo $num."번째 글 내용";
-            $sql = "SELECT num, title, content, user, board_date FROM board WHERE num = '".$num."'";
+            $sql = "SELECT board_no, board_title, board_content, board_user, board_date FROM board WHERE board_no = '".$board_no."'";
             $result = mysqli_query($conn,$sql);
 
             if($result){
@@ -33,16 +33,16 @@
                 if($row = mysqli_fetch_array($result)){
             ?>
             <tr>
-                <td>작성자</td><td><?php echo $row["user"];?></td>                
+                <td>작성자</td><td><?php echo $row["board_user"];?></td>                
             </tr>
             <tr>
-                <td>글번호</td><td><?php echo $row["num"]?></td>              
-                <td>글제목</td><td><?php echo $row["title"];?></td>              
+                <td>글번호</td><td><?php echo $row["board_no"]?></td>              
+                <td>글제목</td><td><?php echo $row["board_title"];?></td>              
                 <td>작성일자</td><td><?php echo $row["board_date"];?></td>               
             </tr>
 
             <tr>
-                <td colspan="6"><?php echo $row["content"];?></td>
+                <td colspan="6"><?php echo $row["board_content"];?></td>
             </tr>
 
             <?php } ?>       
